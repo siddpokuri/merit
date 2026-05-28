@@ -192,6 +192,21 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
   footer .top{grid-template-columns:1.4fr 1fr}
   footer .link-cols{grid-template-columns:repeat(4,1fr)}
 }
+
+/* ---- SCROLL REVEAL ---- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);will-change:opacity,transform}
+.reveal.in{opacity:1;transform:none}
+.reveal-group > *{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}
+.reveal-group.in > *{opacity:1;transform:none}
+.reveal-group.in > *:nth-child(1){transition-delay:0ms}
+.reveal-group.in > *:nth-child(2){transition-delay:80ms}
+.reveal-group.in > *:nth-child(3){transition-delay:160ms}
+.reveal-group.in > *:nth-child(4){transition-delay:240ms}
+.reveal-group.in > *:nth-child(5){transition-delay:320ms}
+.reveal-group.in > *:nth-child(6){transition-delay:400ms}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal-group > *{opacity:1!important;transform:none!important;transition:none!important}
+}
 </style>
 </head>
 <body>
@@ -250,7 +265,7 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
 
 <!-- RATINGS BAR (real numbers only) -->
 <section class="ratings"><div class="wrap">
-  <div class="ratings-grid">
+  <div class="ratings-grid reveal-group">
     <div class="rating-tile">
       <div class="num">4.7</div>
       <div class="stars">★★★★★</div>
@@ -273,12 +288,12 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
 
 <!-- PRESS -->
 <section class="press"><div class="wrap">
-  <div class="lbl">— In the press —</div>
-  <div class="press-feature">
+  <div class="lbl reveal">— In the press —</div>
+  <div class="press-feature reveal">
     <div class="src">Eater-SF · 2022</div>
     <div class="q">"A knockout vegan restaurant in the South Bay."</div>
   </div>
-  <div class="press-grid">
+  <div class="press-grid reveal-group">
     <div class="press-card"><div class="src">2020</div><div class="q">One of the best vegetarian restaurants in Silicon Valley.</div></div>
     <div class="press-card"><div class="src">2021</div><div class="q">A top vegetarian restaurant in the Bay Area.</div></div>
     <div class="press-card"><div class="src">2023</div><div class="q">One of the hottest vegan &amp; vegetarian restaurants in California.</div></div>
@@ -287,12 +302,12 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
 
 <!-- ORDER -->
 <section class="order" id="order"><div class="wrap">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <span class="kicker">Order Online</span>
     <h2>Pickup, delivery, or dine in</h2>
     <p>Order directly through Merit for pickup, or get us delivered by your favorite app.</p>
   </div>
-  <div class="order-grid">
+  <div class="order-grid reveal-group">
     <a class="order-card" href="http://pos.chowbus.com/online-ordering/store/restaurant/22772">
       <div class="left">
         <div class="badge">PICK<br>UP</div>
@@ -340,12 +355,12 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
 
 <!-- MENU -->
 <section class="food" id="menu"><div class="wrap">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <span class="kicker">The Menu</span>
     <h2>A taste of what's on the table</h2>
   </div>
   <p class="menu-blurb">A wide variety of plant-based dishes — appetizers, salads, noodles, soups, entrées, specials, desserts, cakes, and Eastern &amp; Western favorites. No animal ingredients, no MSG, no artificial sweeteners.</p>
-  <div class="photos">
+  <div class="photos reveal-group">
     <div class="photo-tile"><img src="dish-1.jpg" alt="Featured Merit dish"></div>
     <div class="photo-tile"><img src="dish-2.jpg" alt="Featured Merit dish"></div>
   </div>
@@ -355,7 +370,7 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
 </div></section>
 
 <!-- FILM -->
-<section class="film" id="film"><div class="wrap">
+<section class="film" id="film"><div class="wrap reveal">
   <span class="kicker" style="color:var(--leaf)">Now Showing</span>
   <h2>Film Events — June &amp; July</h2>
   <p>Join us for vegan-themed film screenings at Merit. Free, open to the community — dinner &amp; a movie.</p>
@@ -367,7 +382,7 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
   <span class="kicker" style="color:#d6ecc7">Our Philosophy</span>
   <p class="hero-line">"Being a vegan, you're a hero — you help save animals, health, children, and the planet."</p>
   <p class="sub-line">Our nature is love. We respect all lives. We cook with love.</p>
-  <div class="triad">
+  <div class="triad reveal-group">
     <div class="t">
       <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div>
       <h4>Our nature is love</h4>
@@ -391,7 +406,7 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
 
 <!-- FOOTER -->
 <footer><div class="wrap">
-  <div class="top">
+  <div class="top reveal-group">
     <div>
       <div class="brand-foot serif">Merit Vegan Restaurant</div>
       <div class="contact-list">
@@ -463,5 +478,15 @@ footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px
   <div class="closer">Be vegan, go green — to save animals, health &amp; planet.</div>
 </div></footer>
 
+<script>
+(()=>{
+  const els=document.querySelectorAll('.reveal,.reveal-group');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+</script>
 </body>
 </html>
