@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merit Vegan Restaurant — Sunnyvale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#2f6f4e;--green-dark:#234f38;--green-deep:#163325;
+  --leaf:#5a9a73;--cream:#faf6ee;--paper:#ffffff;
+  --ink:#1a1d1a;--muted:#5c625c;--line:#e6e2d6;--border:#1a1d1a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;transition:color .18s ease}
+.serif{font-family:'Fraunces',serif}
+
+/* ---- BUTTONS ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:.95rem;cursor:pointer;padding:14px 22px;border-radius:8px;border:1.5px solid var(--border);transition:transform .15s ease,box-shadow .15s ease,background .2s ease;box-shadow:0 0 0 0 var(--border)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border);background:var(--green-dark)}
+.btn-secondary{background:var(--paper);color:var(--green-deep)}
+.btn-secondary:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.btn-ghost:hover{background:#fff;color:var(--green-deep);border-color:#fff;transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 rgba(255,255,255,.5)}
+.btn-lg{padding:16px 26px;font-size:1rem}
+
+/* ---- NAV ---- */
+header.nav{position:sticky;top:0;z-index:60;background:rgba(250,246,238,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 18px;max-width:1180px;margin:0 auto}
+.brand{font-family:'Fraunces',serif;font-weight:800;font-size:1.35rem;color:var(--green-deep);letter-spacing:-.01em;line-height:1;transition:color .2s ease}
+.brand:hover{color:var(--green)}
+.brand small{display:block;font-family:'Inter',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-top:3px}
+nav.links{display:none;gap:24px}
+nav.links a{font-weight:500;font-size:.92rem;color:var(--ink);position:relative;padding:6px 0}
+nav.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--green);transition:width .22s ease}
+nav.links a:hover{color:var(--green)}
+nav.links a:hover::after{width:100%}
+.order-btn-nav{background:var(--green);color:#fff;padding:9px 16px;border-radius:7px;font-weight:600;font-size:.85rem;border:1.5px solid var(--border);transition:transform .15s ease,box-shadow .15s ease,background .2s ease}
+.order-btn-nav:hover{background:var(--green-dark);transform:translate(-2px,-2px);box-shadow:3px 3px 0 0 var(--border)}
+
+/* ---- HERO ---- */
+.hero{position:relative;background:var(--green);color:#fff;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(80% 60% at 90% 10%,rgba(255,255,255,.1),transparent 55%),radial-gradient(60% 50% at 0% 100%,rgba(0,0,0,.18),transparent 60%)}
+.hero .photo-bg{position:absolute;top:0;right:0;bottom:0;width:55%;z-index:1;pointer-events:none;display:none}
+.hero .photo-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero .photo-bg::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(100deg,var(--green) 0%,var(--green) 15%,rgba(47,111,78,0) 55%);pointer-events:none}
+.hero .inner{position:relative;z-index:3;padding:56px 22px 64px;max-width:1180px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.88;margin-bottom:18px}
+.eyebrow::before{content:"";width:24px;height:2px;background:#fff}
+.hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.4rem,8vw,4rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:18px}
+.hero h1 em{font-style:italic;font-weight:500;color:#d6ecc7}
+.hero p.lede{font-size:1.05rem;line-height:1.5;color:#e9efe3;max-width:30em;margin-bottom:28px}
+.hero-cta{display:flex;flex-direction:column;gap:10px;margin-bottom:30px}
+
+.info-card{background:var(--paper);color:var(--ink);border:1.5px solid var(--border);border-radius:12px;padding:18px 20px;display:grid;gap:14px;margin-top:6px;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 0 0 0 var(--border)}
+.info-card:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border)}
+.info-row{display:flex;gap:12px;align-items:flex-start}
+.info-row .ico{flex-shrink:0;width:28px;height:28px;border-radius:6px;background:var(--cream);border:1.5px solid var(--green);color:var(--green);display:grid;place-items:center;transition:background .2s ease,color .2s ease}
+.info-card:hover .info-row .ico{background:var(--green);color:#fff}
+.info-row .ico svg{width:14px;height:14px}
+.info-row .label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:2px}
+.info-row .val{font-size:.95rem;font-weight:600;line-height:1.35}
+.info-row .sub{font-size:.82rem;color:var(--muted);margin-top:2px}
+.info-row .sub a{color:var(--green);font-weight:600;border-bottom:1px solid transparent}
+.info-row .sub a:hover{border-color:var(--green)}
+
+/* ---- SECTIONS ---- */
+section{padding:60px 22px}
+section .wrap{max-width:1180px;margin:0 auto}
+.sec-head{margin-bottom:32px}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:8px}
+.sec-head h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.8rem,5vw,2.4rem);color:var(--green-deep);letter-spacing:-.015em}
+.sec-head p{font-size:1rem;color:var(--muted);margin-top:8px;max-width:34em}
+
+/* ---- PRESS / RATINGS ---- */
+.press{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 22px}
+.press .wrap{max-width:1180px;margin:0 auto}
+.press .lbl{text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.press-feature{max-width:680px;margin:0 auto 28px;text-align:center;padding:22px 24px;background:var(--cream);border:1.5px solid var(--border);border-radius:12px;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 0 0 0 var(--border)}
+.press-feature:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border)}
+.press-feature .src{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.press-feature .q{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:1.3rem;line-height:1.3;color:var(--ink)}
+.press-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.press-card{background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:16px 18px;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 0 0 0 var(--border)}
+.press-card:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border)}
+.press-card .src{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.press-card .q{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:1rem;line-height:1.4;color:var(--ink)}
+
+/* ---- RATINGS BAR ---- */
+.ratings{background:var(--cream);padding:30px 22px}
+.ratings .wrap{max-width:1180px;margin:0 auto}
+.ratings-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:center}
+.rating-tile{background:var(--paper);border:1.5px solid var(--border);border-radius:10px;padding:14px 12px;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 0 0 0 var(--border)}
+.rating-tile:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border)}
+.rating-tile .num{font-family:'Fraunces',serif;font-weight:700;font-size:1.5rem;color:var(--green-deep);line-height:1}
+.rating-tile .src{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.rating-tile .stars{color:#f5b840;letter-spacing:1px;font-size:.78rem;margin-top:3px}
+
+/* ---- ORDER ---- */
+.order{background:var(--cream)}
+.order-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.order-card{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--paper);border:1.5px solid var(--border);border-radius:10px;padding:18px 20px;transition:transform .18s ease,box-shadow .18s ease;box-shadow:0 0 0 0 var(--border)}
+.order-card:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border)}
+.order-card .left{display:flex;align-items:center;gap:14px;min-width:0}
+.order-card .badge{width:44px;height:44px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;flex-shrink:0;border:1.5px solid var(--border);font-weight:800;font-size:.7rem;letter-spacing:.04em;text-align:center;line-height:1}
+.order-card h3{font-size:1rem;font-weight:700;color:var(--ink)}
+.order-card p{font-size:.82rem;color:var(--muted);margin-top:2px}
+.order-card .arrow{color:var(--green);font-size:1.3rem;font-weight:700;flex-shrink:0;transition:transform .2s ease}
+.order-card:hover .arrow{transform:translateX(4px)}
+.primary-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--green);color:#fff;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle}
+
+/* ---- FOOD ---- */
+.food{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.food .photos{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:24px}
+.photo-tile{aspect-ratio:4/3;border-radius:12px;border:1.5px solid var(--border);overflow:hidden;background:var(--cream);position:relative;transition:transform .25s ease,box-shadow .25s ease;box-shadow:0 0 0 0 var(--border)}
+.photo-tile:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 0 var(--border)}
+.photo-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.photo-tile:hover img{transform:scale(1.04)}
+.photo-placeholder{display:grid;place-items:center;height:100%;background:linear-gradient(135deg,#e6efe3,#cfe1cf);color:var(--green-deep);font-weight:600;font-size:.85rem;letter-spacing:.08em}
+.food .menu-cta{text-align:center}
+.menu-blurb{text-align:center;font-size:1rem;color:var(--muted);max-width:38em;margin:0 auto 26px}
+
+/* ---- FILM ---- */
+.film{background:var(--green-deep);color:#fff;text-align:center}
+.film .wrap{padding:52px 22px}
+.film h2{font-family:'Fraunces',serif;font-weight:700;font-style:italic;font-size:clamp(1.8rem,5vw,2.6rem);margin-bottom:10px}
+.film p{opacity:.85;margin-bottom:22px;max-width:32em;margin-left:auto;margin-right:auto}
+
+/* ---- VALUES ---- */
+.values{background:var(--green);color:#fff;text-align:center}
+.values .wrap{padding:60px 22px}
+.values .hero-line{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:clamp(1.4rem,4.6vw,2rem);line-height:1.3;max-width:24em;margin:0 auto 10px}
+.values .sub-line{font-size:1rem;opacity:.9;margin-bottom:30px}
+.values .triad{display:grid;grid-template-columns:1fr;gap:18px;margin:30px auto 0;max-width:680px}
+.values .triad .t{padding:22px 18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:10px;transition:transform .22s ease,background .22s ease}
+.values .triad .t:hover{transform:translateY(-4px);background:rgba(255,255,255,.12)}
+.values .triad .t-ico{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.15);display:grid;place-items:center;margin:0 auto 12px;transition:background .22s ease}
+.values .triad .t:hover .t-ico{background:rgba(255,255,255,.25)}
+.values .triad .t-ico svg{width:18px;height:18px}
+.values .triad h4{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:1.1rem;margin-bottom:4px}
+.values .triad p{font-size:.86rem;opacity:.85}
+.values .tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.92;margin-top:30px}
+.values .tags span::before{content:"·";margin-right:10px;opacity:.5}
+.values .tags span:first-child::before{display:none}
+
+/* ---- FOOTER ---- */
+footer{background:#0f1f17;color:#cfd6d0;padding:54px 22px 30px}
+footer .wrap{max-width:1180px;margin:0 auto}
+footer .top{display:grid;grid-template-columns:1fr;gap:30px;margin-bottom:32px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.12)}
+footer .brand-foot{font-family:'Fraunces',serif;font-weight:800;font-size:1.7rem;color:#fff;margin-bottom:14px}
+footer .contact-list{font-size:.92rem;line-height:1.9}
+footer .contact-list a:hover{color:#fff}
+footer .contact-list .ic{display:inline-block;width:18px;text-align:center;margin-right:8px;color:var(--leaf);font-weight:600}
+footer .badges{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+footer .badge-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 13px;font-size:.78rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:transform .18s ease,background .2s ease}
+footer .badge-pill:hover{transform:translateY(-2px);background:rgba(255,255,255,.14)}
+footer .badge-pill .pn{font-family:'Fraunces',serif;font-weight:700;font-size:1.02rem}
+footer .link-cols{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;margin-bottom:30px}
+footer .link-cols h5{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+footer .link-cols a{display:block;font-size:.88rem;padding:5px 0;opacity:.78;transition:opacity .18s ease,color .18s ease,padding-left .2s ease}
+footer .link-cols a:hover{opacity:1;color:#fff;padding-left:5px}
+footer .socials{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
+footer .socials a{width:36px;height:36px;border-radius:7px;border:1.5px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:transform .18s ease,background .2s ease,color .2s ease}
+footer .socials a:hover{background:#fff;color:#0f1f17;transform:translateY(-2px)}
+footer .socials svg{width:14px;height:14px}
+footer .legal{font-size:.74rem;opacity:.55;line-height:1.7}
+footer .legal a{text-decoration:underline;opacity:.8}
+footer .legal a:hover{opacity:1;color:#fff}
+footer .closer{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-family:'Fraunces',serif;font-style:italic;font-size:.98rem;opacity:.7}
+
+/* ---- DESKTOP ---- */
+@media(min-width:780px){
+  .hero .photo-bg{display:block}
+  nav.links{display:flex}
+  .hero .inner{padding:88px 28px 96px;display:grid;grid-template-columns:minmax(0,560px);gap:32px;align-items:start}
+  .info-card{margin-top:0;padding:26px;gap:18px}
+  .info-row .ico{width:34px;height:34px}
+  .info-row .ico svg{width:16px;height:16px}
+  .info-row .val{font-size:1.02rem}
+  .hero-cta{flex-direction:row}
+  section{padding:88px 28px}
+  .press-grid{grid-template-columns:repeat(3,1fr)}
+  .ratings-grid{grid-template-columns:repeat(4,1fr);gap:14px}
+  .rating-tile{padding:18px 14px}
+  .rating-tile .num{font-size:1.8rem}
+  .order-grid{grid-template-columns:1fr 1fr}
+  .food .photos{grid-template-columns:1fr 1fr}
+  .sec-head{text-align:center;margin-bottom:42px}
+  .sec-head p{margin-left:auto;margin-right:auto}
+  .values .triad{grid-template-columns:repeat(3,1fr)}
+  footer .top{grid-template-columns:1.4fr 1fr}
+  footer .link-cols{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav"><div class="nav-inner">
+  <a class="brand serif" href="#top">Merit<small>Vegan Restaurant</small></a>
+  <nav class="links">
+    <a href="#menu">Menu</a>
+    <a href="#order">Order</a>
+    <a href="#film">Film Events</a>
+    <a href="#about">About</a>
+  </nav>
+  <a class="order-btn-nav" href="http://pos.chowbus.com/online-ordering/store/restaurant/22772">Order</a>
+</div></header>
+
+<!-- HERO (photo version) -->
+<section class="hero" id="top">
+  <div class="photo-bg">
+    <img src="hero-food.jpg" alt="Merit Vegan signature dish">
+  </div>
+  <div class="inner">
+    <div class="hero-text">
+      <span class="eyebrow">Sunnyvale · Since 2007</span>
+      <h1>Plant-based food, <em>cooked with love.</em></h1>
+      <p class="lede">A Sunnyvale staple for nearly two decades. Fresh, organic, non-GMO dishes — Asian classics, Western favorites, and everything in between. No animal ingredients, no MSG, no artificial sweeteners.</p>
+      <div class="hero-cta">
+        <a class="btn btn-secondary btn-lg" href="http://pos.chowbus.com/online-ordering/store/restaurant/22772">Order Online</a>
+        <a class="btn btn-ghost btn-lg" href="#menu">View Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT INFO -->
+<section style="background:var(--paper);border-bottom:1px solid var(--line);padding:32px 22px"><div class="wrap" style="max-width:980px">
+  <div class="info-card" id="visit">
+    <div class="info-row">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <div>
+        <div class="label">Visit</div>
+        <div class="val">548 Lawrence Expy, Suite 2</div>
+        <div class="sub">Sunnyvale, CA 94085 · <a href="https://goo.gl/maps/62LbAq2ymGWvdqYi6">Get directions</a></div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <div>
+        <div class="label">Hours</div>
+        <div class="val">11:00 AM – 3:00 PM &nbsp;·&nbsp; 4:30 PM – 8:00 PM</div>
+        <div class="sub">Lunch &amp; dinner, seven days a week</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+      <div>
+        <div class="label">Call &amp; Email</div>
+        <div class="val"><a href="tel:14082458988">(408) 245-8988</a></div>
+        <div class="sub"><a href="mailto:meritvegetarian@yahoo.com">meritvegetarian@yahoo.com</a></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- RATINGS BAR (real numbers only) -->
+<section class="ratings"><div class="wrap">
+  <div class="ratings-grid">
+    <div class="rating-tile">
+      <div class="num">4.7</div>
+      <div class="stars">★★★★★</div>
+      <div class="src">Uber Eats · 1,500+ ratings</div>
+    </div>
+    <div class="rating-tile">
+      <div class="num">#7</div>
+      <div class="src">TripAdvisor · of 254 Sunnyvale restaurants</div>
+    </div>
+    <div class="rating-tile">
+      <div class="num">1,858</div>
+      <div class="src">Yelp reviews</div>
+    </div>
+    <div class="rating-tile">
+      <div class="num">♥</div>
+      <div class="src">Most Loved on DoorDash</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PRESS -->
+<section class="press"><div class="wrap">
+  <div class="lbl">— In the press —</div>
+  <div class="press-feature">
+    <div class="src">Eater-SF · 2022</div>
+    <div class="q">"A knockout vegan restaurant in the South Bay."</div>
+  </div>
+  <div class="press-grid">
+    <div class="press-card"><div class="src">2020</div><div class="q">One of the best vegetarian restaurants in Silicon Valley.</div></div>
+    <div class="press-card"><div class="src">2021</div><div class="q">A top vegetarian restaurant in the Bay Area.</div></div>
+    <div class="press-card"><div class="src">2023</div><div class="q">One of the hottest vegan &amp; vegetarian restaurants in California.</div></div>
+  </div>
+</div></section>
+
+<!-- ORDER -->
+<section class="order" id="order"><div class="wrap">
+  <div class="sec-head">
+    <span class="kicker">Order Online</span>
+    <h2>Pickup, delivery, or dine in</h2>
+    <p>Order directly through Merit for pickup, or get us delivered by your favorite app.</p>
+  </div>
+  <div class="order-grid">
+    <a class="order-card" href="http://pos.chowbus.com/online-ordering/store/restaurant/22772">
+      <div class="left">
+        <div class="badge">PICK<br>UP</div>
+        <div><h3>Order for Pickup<span class="primary-tag">Primary</span></h3><p>Order direct · ready in ~20 min</p></div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="order-card" href="http://meritvegan.square.site">
+      <div class="left">
+        <div class="badge">BACK<br>UP</div>
+        <div><h3>Order for Pickup</h3><p>Backup ordering site</p></div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="order-card" href="https://order.online/store/merit-vegetarian-474/en-US/?delivery=true&hideModal=true">
+      <div class="left">
+        <div class="badge" style="background:#eb1700">DD</div>
+        <div><h3>DoorDash Delivery</h3><p>For non-DashPass members</p></div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="order-card" href="https://www.doordash.com/store/merit-vegetarian-sunnyvale-474/en-US">
+      <div class="left">
+        <div class="badge" style="background:#eb1700">DD</div>
+        <div><h3>DoorDash Market</h3><p>For DashPass members</p></div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="order-card" href="https://www.ubereats.com/store/merit-vegetarian/IgTuWabPTI2bRrYiapSaiQ?diningMode=DELIVERY">
+      <div class="left">
+        <div class="badge" style="background:#0a0a0a">UE</div>
+        <div><h3>Uber Eats Delivery</h3><p>Order via Uber Eats</p></div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="order-card" href="https://www.grubhub.com/restaurant/merit-vegan-548-lawrence-expy-sunnyvale/2673730">
+      <div class="left">
+        <div class="badge" style="background:#f63440">GH</div>
+        <div><h3>Grubhub Delivery</h3><p>Order via Grubhub</p></div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</div></section>
+
+<!-- MENU -->
+<section class="food" id="menu"><div class="wrap">
+  <div class="sec-head">
+    <span class="kicker">The Menu</span>
+    <h2>A taste of what's on the table</h2>
+  </div>
+  <p class="menu-blurb">A wide variety of plant-based dishes — appetizers, salads, noodles, soups, entrées, specials, desserts, cakes, and Eastern &amp; Western favorites. No animal ingredients, no MSG, no artificial sweeteners.</p>
+  <div class="photos">
+    <div class="photo-tile"><img src="dish-1.jpg" alt="Featured Merit dish"></div>
+    <div class="photo-tile"><img src="dish-2.jpg" alt="Featured Merit dish"></div>
+  </div>
+  <div class="menu-cta">
+    <a class="btn btn-primary btn-lg" href="http://pos.chowbus.com/online-ordering/store/restaurant/22772">See the Full Menu</a>
+  </div>
+</div></section>
+
+<!-- FILM -->
+<section class="film" id="film"><div class="wrap">
+  <span class="kicker" style="color:var(--leaf)">Now Showing</span>
+  <h2>Film Events — June &amp; July</h2>
+  <p>Join us for vegan-themed film screenings at Merit. Free, open to the community — dinner &amp; a movie.</p>
+  <a class="btn btn-ghost btn-lg" href="https://www.meritvegetarian.com/events">See the Schedule</a>
+</div></section>
+
+<!-- VALUES -->
+<section class="values" id="about"><div class="wrap">
+  <span class="kicker" style="color:#d6ecc7">Our Philosophy</span>
+  <p class="hero-line">"Being a vegan, you're a hero — you help save animals, health, children, and the planet."</p>
+  <p class="sub-line">Our nature is love. We respect all lives. We cook with love.</p>
+  <div class="triad">
+    <div class="t">
+      <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div>
+      <h4>Our nature is love</h4>
+      <p>Food made with care, for people and for the planet.</p>
+    </div>
+    <div class="t">
+      <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+      <h4>Respect all lives</h4>
+      <p>Cruelty-free dining, with no compromise on flavor.</p>
+    </div>
+    <div class="t">
+      <div class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13c2-1 4-1 6 0s4 1 6 0 4-1 6 0M5 17h14"/></svg></div>
+      <h4>Cook with love</h4>
+      <p>Every dish, hand-prepared with the same intention.</p>
+    </div>
+  </div>
+  <div class="tags">
+    <span>100% Plant-Based</span><span>Organic</span><span>Non-GMO</span><span>No MSG</span><span>No Artificial Sweeteners</span>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="top">
+    <div>
+      <div class="brand-foot serif">Merit Vegan Restaurant</div>
+      <div class="contact-list">
+        <div><span class="ic">☎</span> <a href="tel:14082458988">(408) 245-8988</a></div>
+        <div><span class="ic">◎</span> 548 Lawrence Expy, Suite 2, Sunnyvale, CA 94085</div>
+        <div><span class="ic">◷</span> Open daily · 11:00 AM – 3:00 PM &nbsp;·&nbsp; 4:30 PM – 8:00 PM</div>
+        <div><span class="ic">✉</span> <a href="mailto:meritvegetarian@yahoo.com">meritvegetarian@yahoo.com</a></div>
+        <div><span class="ic">↗</span> <a href="https://www.meritvegetarian.com">meritvegan.com</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="badges">
+        <a class="badge-pill" href="https://g.page/r/Cc9sofP8ULwYEBM/review"><span class="pn">G</span> Review us on Google</a>
+        <a class="badge-pill" href="https://www.tripadvisor.com/Restaurant_Review-g33146-d1027580-Reviews-Merit_Vegan_Restaurant-Sunnyvale_California.html" style="background:#34a853;color:#fff;border-color:#34a853"><span class="pn">#7</span> on TripAdvisor · 109 reviews</a>
+        <a class="badge-pill" href="https://www.doordash.com/store/merit-vegetarian-sunnyvale-474/en-US" style="background:#eb1700;color:#fff;border-color:#eb1700">♥ Most Loved on DoorDash</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="link-cols">
+    <div>
+      <h5>Visit</h5>
+      <a href="#visit">Hours &amp; Location</a>
+      <a href="https://www.meritvegetarian.com/reserve">Reservations</a>
+      <a href="https://www.meritvegetarian.com/contact-us">Contact Us</a>
+      <a href="https://www.meritvegetarian.com/review-us">Review Us</a>
+    </div>
+    <div>
+      <h5>Eat</h5>
+      <a href="#order">Order Online</a>
+      <a href="https://www.meritvegetarian.com/catering">Catering</a>
+      <a href="#menu">Menu</a>
+      <a href="https://www.meritvegetarian.com/about-us">Food Allergy Alert</a>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <a href="#about">About Us</a>
+      <a href="https://www.meritvegetarian.com/blog">Blog</a>
+      <a href="https://www.meritvegetarian.com/video">Video Library</a>
+      <a href="https://www.meritvegetarian.com/raffle">Raffle</a>
+      <a href="#film">Film Events</a>
+    </div>
+    <div>
+      <h5>Resources</h5>
+      <a href="http://ThePlantKids.com">ThePlantKids.com</a>
+      <a href="http://PlantBasedTreaty.org">PlantBasedTreaty.org</a>
+      <a href="https://www.meritvegetarian.com/news">Vegan News</a>
+      <a href="https://www.meritvegetarian.com/vegan-recipe">Vegan Recipes</a>
+    </div>
+  </div>
+
+  <div class="socials">
+    <a href="https://www.facebook.com/MeritVeganRestaurant" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3H13V9.1c0-.9.2-1.5 1.5-1.5H16V5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.4-3.8 3.9V11H7.5v3H10v8h3z"/></svg></a>
+    <a href="https://www.instagram.com/meritvegetarian/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .4 1.4.9.5.4.7.8.9 1.4.1.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.4 1-.9 1.4-.4.5-.8.7-1.4.9-.4.1-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.4-1.4-.9-.5-.4-.7-.8-.9-1.4-.1-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.4-1 .9-1.4.4-.5.8-.7 1.4-.9.4-.1 1-.3 2.2-.4 1.3-.1 1.7-.1 4.9-.1zM12 6.9A5.1 5.1 0 1012 17 5.1 5.1 0 0012 6.9zm0 8.4A3.3 3.3 0 1112 8.7a3.3 3.3 0 010 6.6zm5.3-8.6a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a>
+    <a href="https://twitter.com/VeganMerit" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.6a9.4 9.4 0 01-2.7.7 4.7 4.7 0 002-2.6 9.4 9.4 0 01-3 1.1 4.7 4.7 0 00-8 4.3A13.3 13.3 0 011.6 3.2a4.7 4.7 0 001.5 6.3A4.7 4.7 0 011 8.9v.1a4.7 4.7 0 003.8 4.6 4.7 4.7 0 01-2.1.1 4.7 4.7 0 004.4 3.3A9.4 9.4 0 011 19a13.3 13.3 0 007.2 2.1c8.6 0 13.3-7.1 13.3-13.3v-.6A9.5 9.5 0 0023 4.6z"/></svg></a>
+    <a href="http://www.yelp.com/biz/merit-vegetarian-sunnyvale" aria-label="Yelp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 4l-2 8 6-2-4-6zm-1 9l5 3-3 3-2-6zm-2 0l-5 3 3 3 2-6zm-1-1L4 10l3-4 3 6z"/></svg></a>
+    <a href="https://foursquare.com/v/merit-vegetarian-restaurant/4a0ceefaf964a5206d751fe3/menu" aria-label="Foursquare"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="9"/></svg></a>
+  </div>
+
+  <div class="legal">
+    © Merit Vegan Restaurant · Sunnyvale, CA<br>
+    <a href="https://www.meritvegetarian.com/refund-return">Refund &amp; Return</a> ·
+    <a href="https://www.meritvegetarian.com/terms-conditions">Terms &amp; Conditions</a> ·
+    <a href="https://www.meritvegetarian.com/privacy-policy">Privacy Policy</a> ·
+    <a href="https://www.meritvegetarian.com/accessibility">Accessibility</a> ·
+    <a href="#">Do Not Sell My Personal Information</a>
+  </div>
+
+  <div class="closer">Be vegan, go green — to save animals, health &amp; planet.</div>
+</div></footer>
+
+</body>
+</html>
